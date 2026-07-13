@@ -11,7 +11,7 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).parent
-SITE_URL = "https://thismad.github.io/datenight/"
+SITE_URL = "https://ourfirsthoneymoon.com/"
 TITLE = "Budapest → Somewhere · July 28–31"
 DESCRIPTION = "Four destinations. One decision. No pressure. (Some pressure.)"
 OG_IMAGE = SITE_URL + "img/como-balbianello.jpg"
