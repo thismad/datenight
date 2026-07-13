@@ -166,11 +166,14 @@
 
   .board{
     margin:26px 0 0;border:1px dashed var(--line);border-radius:14px;
-    display:grid;grid-template-columns:1fr 1fr;overflow:hidden;
+    display:grid;grid-template-columns:1fr 1fr 1fr;overflow:hidden;
   }
   .board div{padding:13px 16px 11px}
-  .board div:nth-child(odd){border-right:1px dashed var(--line)}
-  .board div:nth-child(n+3){border-top:1px dashed var(--line)}
+  .board div + div{border-left:1px dashed var(--line)}
+  @media (max-width:520px){
+    .board{grid-template-columns:1fr}
+    .board div + div{border-left:none;border-top:1px dashed var(--line)}
+  }
   .board dt{
     font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sea);
     font-weight:700;margin:0 0 2px;
@@ -378,7 +381,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="script">a completely reasonable proposal</span>
+    <span class="script">Saba, here is a completely reasonable proposal</span>
     <h1 class="serif">The <em>First</em> Trip</h1>
     <div class="rule"></div>
     <p>We matched <strong>two days ago</strong>. We've never met. Our entire relationship runs on voice notes. So naturally, the next step is <strong>four days somewhere beautiful — July 28 to 31.</strong> I did the research. You do the choosing.</p>
@@ -449,7 +452,6 @@
     </div>
     <dl class="board rev">
       <div><dt>Your flight</dt><dd>BUD → Naples<small>~1h35, direct</small></dd></div>
-      <div><dt>My flight</dt><dd>Basel/Paris → Naples<small>easyJet, as promised</small></dd></div>
       <div><dt>Then</dt><dd>Hydrofoil to the island<small>50 min, together</small></dd></div>
       <div><dt>Late July</dt><dd>30–33 °C<small>sea: bath temperature</small></dd></div>
     </dl>
@@ -502,7 +504,6 @@
     </div>
     <dl class="board rev">
       <div><dt>Your flight</dt><dd>BUD → Paris<small>~2h20, direct</small></dd></div>
-      <div><dt>My flight</dt><dd>None<small>already there, engine running</small></dd></div>
       <div><dt>Then</dt><dd>~2h scenic drive<small>roof: down</small></dd></div>
       <div><dt>Late July</dt><dd>25–30 °C<small>the comfortable one</small></dd></div>
     </dl>
@@ -555,7 +556,6 @@
     </div>
     <dl class="board rev">
       <div><dt>Your flight</dt><dd>BUD → Corfu<small>~1h50, direct in summer</small></dd></div>
-      <div><dt>My flight</dt><dd>Paris → Corfu<small>easyJet summer route</small></dd></div>
       <div><dt>Then</dt><dd>20 min to the coast<small>sandals on</small></dd></div>
       <div><dt>Late July</dt><dd>30–34 °C<small>the warm-blooded one</small></dd></div>
     </dl>
@@ -608,7 +608,6 @@
     </div>
     <dl class="board rev">
       <div><dt>Your flight</dt><dd>BUD → Milan<small>~1h35, direct</small></dd></div>
-      <div><dt>My flight</dt><dd>Basel/Paris → Milan<small>easyJet, obviously</small></dd></div>
       <div><dt>Then</dt><dd>~1h to the lake<small>I'll meet you on the shore</small></dd></div>
       <div><dt>Late July</dt><dd>28–32 °C<small>cool evenings included</small></dd></div>
     </dl>
@@ -749,16 +748,16 @@
       <div class="pass">
         <div class="pass-head"><span>First-Date Airways</span><span>Boarding pass</span></div>
         <div class="pass-route">
-          <div class="apt"><div class="code">BUD</div><div class="city">Budapest · You</div></div>
+          <div class="apt"><div class="code">BUD</div><div class="city">Budapest · Saba</div></div>
           <div class="plane">✈</div>
           <div class="apt"><div class="code" id="passCode">NAP</div><div class="city" id="passCity">Ischia · Us</div></div>
         </div>
         <dl class="pass-grid">
           <div><dt>Date</dt><dd>28 JUL</dd></div>
           <div><dt>Return</dt><dd>31 JUL</dd></div>
-          <div><dt>Flight</dt><dd>F1RST</dd></div>
+          <div><dt>Passenger</dt><dd>Saba</dd></div>
           <div><dt>Seat</dt><dd>Next to me</dd></div>
-          <div><dt>Gate</dt><dd>TBD</dd></div>
+          <div><dt>Flight</dt><dd>F1RST</dd></div>
           <div><dt>Class</dt><dd>Butterflies</dd></div>
         </dl>
         <div class="pass-tear"></div>
