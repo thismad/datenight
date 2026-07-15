@@ -32,7 +32,7 @@ PAGES = [
         "template": "template-ischia.html",
         "out": "ischia/index.html",
         "title": "Ischia · The Itinerary · July 28–31",
-        "description": "Chapter two: four days on a volcanic island, hour by hour-ish.",
+        "description": "The itinerary: four days on a volcanic island, hour by hour-ish.",
         "og_image": SITE_URL + "img/ischia-santangelo-sunset.jpg",
         "url": SITE_URL + "ischia/",
     },
