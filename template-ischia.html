@@ -1,0 +1,256 @@
+<style>
+  :root{
+    --paper:#FBF7F0;
+    --card:#FFFFFF;
+    --ink:#22303F;
+    --muted:#6E7887;
+    --sea:#2F6D8C;
+    --line:#E7DECF;
+    --flame1:#FD3A73;
+    --flame2:#FF6A3D;
+    --shadow:0 10px 30px rgba(34,48,63,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#141B25; --card:#1C2532; --ink:#EDE7DC; --muted:#94A0B0;
+      --sea:#7FB8D6; --line:#2C3846;
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#FBF7F0; --card:#FFFFFF; --ink:#22303F; --muted:#6E7887;
+    --sea:#2F6D8C; --line:#E7DECF;
+    --shadow:0 10px 30px rgba(34,48,63,.12);
+  }
+  :root[data-theme="dark"]{
+    --paper:#141B25; --card:#1C2532; --ink:#EDE7DC; --muted:#94A0B0;
+    --sea:#7FB8D6; --line:#2C3846;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:16.5px;
+    line-height:1.62;
+  }
+  .serif{font-family:"Didot","Bodoni 72","Playfair Display","Baskerville","Times New Roman",Georgia,serif}
+  .script{
+    font-family:"Snell Roundhand","Savoye LET","Brush Script MT","Segoe Script",cursive;
+    font-style:italic;font-weight:400;
+  }
+  img{max-width:100%;display:block}
+  .wrap{max-width:620px;margin-inline:auto;padding-inline:22px}
+
+  @media (prefers-reduced-motion: no-preference){
+    .js .rev{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+    .js .rev.in{opacity:1;transform:none}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 30px;text-align:center}
+  .hero .script{font-size:1.7rem;color:var(--flame1);display:block;margin-bottom:6px}
+  .hero h1{
+    font-size:clamp(2.7rem,12vw,4.2rem);
+    line-height:1.02;margin:.05em 0 .35em;font-weight:400;text-wrap:balance;
+  }
+  .hero h1 em{font-style:italic}
+  .hero .rule{
+    width:88px;height:4px;border-radius:2px;margin:0 auto 22px;
+    background:linear-gradient(90deg,var(--flame1),var(--flame2));
+  }
+  .hero p{max-width:30em;margin:0 auto;color:var(--muted);font-size:1.02rem;text-wrap:pretty}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+  .chip{
+    font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;
+    border:1px solid var(--line);border-radius:999px;padding:7px 14px;
+    color:var(--sea);font-weight:600;font-variant-numeric:tabular-nums;
+  }
+
+  .cover{margin:36px 0 0;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .cover img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 62%}
+
+  /* ---------- days ---------- */
+  .day{padding:58px 0 6px}
+  .kicker{
+    display:flex;align-items:baseline;gap:12px;
+    font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sea);font-weight:700;
+    font-variant-numeric:tabular-nums;
+  }
+  .kicker::after{content:"";flex:1;height:1px;background:var(--line)}
+  .day h2{
+    font-size:clamp(2rem,8.5vw,2.8rem);font-weight:400;line-height:1.05;
+    margin:.25em 0 0;text-wrap:balance;
+  }
+  .day .tag{font-size:1.4rem;color:var(--flame1);display:block;margin:2px 0 18px}
+
+  .tl{display:grid;gap:0;margin:10px 0 0}
+  .row{
+    display:grid;grid-template-columns:86px 1fr;gap:14px;
+    padding:15px 0;border-bottom:1px dashed var(--line);
+  }
+  .row:last-child{border-bottom:none}
+  .when{
+    font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sea);
+    font-weight:700;font-variant-numeric:tabular-nums;padding-top:2px;
+  }
+  .row b{font-weight:650}
+  .row p{margin:3px 0 0;color:var(--muted);font-size:.92rem;line-height:1.5}
+
+  .dayphoto{margin:24px 0 0;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  .dayphoto img{width:100%;aspect-ratio:16/9;object-fit:cover}
+  .dayphoto figcaption{
+    font-family:"Snell Roundhand","Savoye LET","Brush Script MT","Segoe Script",cursive;
+    font-style:italic;color:var(--muted);font-size:1.05rem;
+    padding:9px 6px 2px;text-align:center;
+  }
+
+  details{
+    margin:20px 0 0;border:1px dashed var(--line);border-radius:12px;
+    padding:12px 16px;color:var(--muted);font-size:.9rem;
+  }
+  details summary{
+    cursor:pointer;color:var(--sea);font-weight:700;font-size:.74rem;
+    letter-spacing:.14em;text-transform:uppercase;
+    list-style:none;
+  }
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:" +"}
+  details[open] summary::after{content:" –"}
+  details ul{margin:10px 0 2px;padding-left:18px;display:grid;gap:6px}
+
+  footer{
+    text-align:center;color:var(--muted);font-size:.8rem;
+    padding:40px 22px 46px;border-top:1px solid var(--line);margin-top:60px;
+  }
+  footer a{color:var(--sea)}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="script">chapter two</span>
+    <h1 class="serif">Ischia, <em>then.</em></h1>
+    <div class="rule"></div>
+    <p>You swiped. It matched. I booked. Here's how four days on a volcanic island disappear, Saba.</p>
+    <div class="chips">
+      <span class="chip">July 28–31</span>
+      <span class="chip">Hotel Botania</span>
+      <span class="chip">One convertible</span>
+      <span class="chip">Private pool</span>
+    </div>
+    <figure class="cover rev"><img src="/img/ischia-santangelo-sunset.jpg" alt="Sant'Angelo, Ischia, at golden hour"></figure>
+  </div>
+</header>
+
+<!-- ══════════════ DAY 1 ══════════════ -->
+<section class="day" id="day1">
+  <div class="wrap">
+    <div class="kicker rev">Day 01 · Monday, July 28</div>
+    <h2 class="serif rev">The Rendezvous</h2>
+    <span class="script tag rev">two flights, one port</span>
+    <div class="tl rev">
+      <div class="row"><span class="when">Morning</span><div><b>You fly Budapest → Naples</b><p>Window seat if they honoured the form. I land around the same time: details below.</p></div></div>
+      <div class="row"><span class="when">15:00</span><div><b>Hydrofoil, Naples → Ischia</b><p>I'll be at the port. This is the part where we meet: no pressure, just a boat, the bay of Naples, and 50 minutes to get used to each other's faces.</p></div></div>
+      <div class="row"><span class="when">~16:30</span><div><b>Top down, drive to Botania</b><p>A Fiat convertible is waiting. Fifteen minutes of hairpins and bougainvillea to the hotel: a botanical garden that happens to have rooms.</p></div></div>
+      <div class="row"><span class="when">17:30</span><div><b>Check-in, signature room</b><p>Private pool on the terrace. Yes, private. Yes, ours.</p></div></div>
+      <div class="row"><span class="when">Golden hour</span><div><b>Sunset at Chiesa del Soccorso</b><p>The white church on the rocks in Forio: the island's front-row seat for the sun going down.</p></div></div>
+      <div class="row"><span class="when">Evening</span><div><b>First dinner, Forio</b><p>Somewhere easy, near the water. Day one is for arriving.</p></div></div>
+    </div>
+    <details class="rev"><summary>The boring details</summary>
+      <ul>
+        <li>Your flight: BUD → NAP — <em>details coming soon</em></li>
+        <li>Hydrofoil from Napoli Porto di Beverello, dep. 15:00 (~50 min)</li>
+        <li>Hotel Botania Relais &amp; Spa, Forio: 3 nights, signature room</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- ══════════════ DAY 2 ══════════════ -->
+<section class="day" id="day2">
+  <div class="wrap">
+    <div class="kicker rev">Day 02 · Tuesday, July 29</div>
+    <h2 class="serif rev">The Thermal Day</h2>
+    <span class="script tag rev">warm water, zero decisions</span>
+    <div class="tl rev">
+      <div class="row"><span class="when">Slow a.m.</span><div><b>Breakfast in the gardens</b><p>No alarm. The pool is right there if you wake up before me.</p></div></div>
+      <div class="row"><span class="when">Midday</span><div><b>Poseidon thermal gardens</b><p>Twenty-something pools terraced above the sea, each a different temperature. We work our way up. Or down. There is no wrong order.</p></div></div>
+      <div class="row"><span class="when">Golden hour</span><div><b>Belvedere above Sant'Angelo</b><p>The viewpoint from that photo on the first page: I took it standing exactly where we'll be standing, spritz in hand.</p></div></div>
+      <div class="row"><span class="when">Evening</span><div><b>Dinner in Sant'Angelo</b><p>Car-free village, seafood, slow evenings. We walk down, we eat too much, we take our time.</p></div></div>
+    </div>
+    <figure class="dayphoto rev"><img src="/img/ischia-terrace.jpg" alt="Sunset terrace above the Ischia coast" style="object-position:center 68%"><figcaption>the view I promised you</figcaption></figure>
+    <details class="rev"><summary>The boring details</summary>
+      <ul>
+        <li>Giardini Poseidon Terme, Citara bay: full-day tickets, towels included</li>
+        <li>Sant'Angelo: ~20 min by car from the hotel, park above, walk down</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- ══════════════ DAY 3 ══════════════ -->
+<section class="day" id="day3">
+  <div class="wrap">
+    <div class="kicker rev">Day 03 · Wednesday, July 30</div>
+    <h2 class="serif rev">The Island Loop</h2>
+    <span class="script tag rev">top down, music up</span>
+    <div class="tl rev">
+      <div class="row"><span class="when">Morning</span><div><b>The full loop, by convertible</b><p>Ischia is 34 km around. We do all of them: you own the playlist, I own the hairpins.</p></div></div>
+      <div class="row"><span class="when">Midday</span><div><b>Swim at San Montano</b><p>A shallow, warm, ridiculous bay. We stay until we're hungry.</p></div></div>
+      <div class="row"><span class="when">Afternoon</span><div><b>Ischia Ponte &amp; Castello Aragonese</b><p>The castle on its own rock, connected by a stone bridge. We cross it, climb it, and pretend we're scouting wedding venues as a joke. As a joke.</p></div></div>
+      <div class="row"><span class="when">Evening</span><div><b>Dinner at Arka</b><p>The good table, saved for the last full night.</p></div></div>
+    </div>
+    <figure class="dayphoto rev"><img src="/img/ischia-castello.jpg" alt="Castello Aragonese and the bay of Ischia"><figcaption>castle, sea, us</figcaption></figure>
+    <details class="rev"><summary>The boring details</summary>
+      <ul>
+        <li>Loop: Forio → Lacco Ameno → San Montano → Casamicciola → Ischia Ponte → Serrara → Forio</li>
+        <li>San Montano bay: arrive before 11 for a good spot</li>
+        <li>Dinner: Arka, table booked</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- ══════════════ DAY 4 ══════════════ -->
+<section class="day" id="day4">
+  <div class="wrap">
+    <div class="kicker rev">Day 04 · Thursday, July 31</div>
+    <h2 class="serif rev">The Long Goodbye</h2>
+    <span class="script tag rev">we don't talk about this part</span>
+    <div class="tl rev">
+      <div class="row"><span class="when">Slow a.m.</span><div><b>Private pool, nothing scheduled</b><p>Late breakfast. One last float. Suitcases can wait until they can't.</p></div></div>
+      <div class="row"><span class="when">Midday</span><div><b>Hydrofoil back to Naples</b><p>Same boat, opposite direction, different people than the ones who took it on Monday.</p></div></div>
+      <div class="row"><span class="when">After</span><div><b>Flights home</b><p>You to Budapest, me the other way. This part of the itinerary is still under negotiation.</p></div></div>
+    </div>
+    <figure class="dayphoto rev"><img src="/img/ischia-procida.jpg" alt="Corricella harbour on Procida island"><figcaption>Procida on the way back, if the boats agree</figcaption></figure>
+    <details class="rev"><summary>The boring details</summary>
+      <ul>
+        <li>Check-out, return the car, hydrofoil to Napoli Beverello</li>
+        <li>Your flight: NAP → BUD — <em>details coming soon</em></li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<footer>
+  Chapter one is <a href="/">here</a>, in case you want to check what you agreed to. ✈️
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    document.documentElement.classList.add('js');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rev').forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
