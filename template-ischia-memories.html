@@ -1,0 +1,269 @@
+<style>
+  :root{
+    --paper:#FBF7F0;
+    --card:#FFFFFF;
+    --ink:#22303F;
+    --muted:#6E7887;
+    --sea:#2F6D8C;
+    --line:#E7DECF;
+    --flame1:#FD3A73;
+    --flame2:#FF6A3D;
+    --shadow:0 10px 30px rgba(34,48,63,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#141B25; --card:#1C2532; --ink:#EDE7DC; --muted:#94A0B0;
+      --sea:#7FB8D6; --line:#2C3846;
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#FBF7F0; --card:#FFFFFF; --ink:#22303F; --muted:#6E7887;
+    --sea:#2F6D8C; --line:#E7DECF;
+    --shadow:0 10px 30px rgba(34,48,63,.12);
+  }
+  :root[data-theme="dark"]{
+    --paper:#141B25; --card:#1C2532; --ink:#EDE7DC; --muted:#94A0B0;
+    --sea:#7FB8D6; --line:#2C3846;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:16.5px;
+    line-height:1.62;
+  }
+  .serif{font-family:"Didot","Bodoni 72","Playfair Display","Baskerville","Times New Roman",Georgia,serif}
+  .script{
+    font-family:"Snell Roundhand","Savoye LET","Brush Script MT","Segoe Script",cursive;
+    font-style:italic;font-weight:400;
+  }
+  img,video{max-width:100%;display:block}
+  .wrap{max-width:620px;margin-inline:auto;padding-inline:22px}
+
+  @media (prefers-reduced-motion: no-preference){
+    .js .rev{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+    .js .rev.in{opacity:1;transform:none}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 30px;text-align:center}
+  .hero .script{font-size:1.7rem;color:var(--flame1);display:block;margin-bottom:6px}
+  .hero h1{
+    font-size:clamp(2.7rem,12vw,4.2rem);
+    line-height:1.02;margin:.05em 0 .35em;font-weight:400;text-wrap:balance;
+  }
+  .hero h1 em{font-style:italic}
+  .hero .rule{
+    width:88px;height:4px;border-radius:2px;margin:0 auto 22px;
+    background:linear-gradient(90deg,var(--flame1),var(--flame2));
+  }
+  .hero p{max-width:30em;margin:0 auto;color:var(--muted);font-size:1.02rem;text-wrap:pretty}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+  .chip{
+    font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;
+    border:1px solid var(--line);border-radius:999px;padding:7px 14px;
+    color:var(--sea);font-weight:600;font-variant-numeric:tabular-nums;
+  }
+
+  .cover{margin:36px 0 0;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .cover img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 40%}
+
+  /* ---------- days ---------- */
+  .day{padding:58px 0 6px}
+  .kicker{
+    display:flex;align-items:baseline;gap:12px;
+    font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sea);font-weight:700;
+    font-variant-numeric:tabular-nums;
+  }
+  .kicker::after{content:"";flex:1;height:1px;background:var(--line)}
+  .day h2{
+    font-size:clamp(2rem,8.5vw,2.8rem);font-weight:400;line-height:1.05;
+    margin:.25em 0 0;text-wrap:balance;
+  }
+  .day .tag{font-size:1.4rem;color:var(--flame1);display:block;margin:2px 0 18px}
+  .note{margin:14px 0 0;color:var(--muted);font-size:.98rem;text-wrap:pretty}
+
+  /* ---------- memories ---------- */
+  /* .mem : une photo ou un clip, légende manuscrite dessous.
+     .pair : deux .mem côte à côte (photos verticales).
+     .clip : vidéo en boucle façon GIF, un peu moins large qu'une photo. */
+  .mem{margin:26px 0 0}
+  .mem img,.mem video{
+    width:100%;aspect-ratio:4/5;object-fit:cover;
+    border-radius:14px;box-shadow:var(--shadow);background:var(--line);
+  }
+  .mem figcaption{
+    font-family:"Snell Roundhand","Savoye LET","Brush Script MT","Segoe Script",cursive;
+    font-style:italic;color:var(--muted);font-size:1.08rem;line-height:1.3;
+    padding:10px 6px 0;text-align:center;text-wrap:balance;
+  }
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:26px 0 0;align-items:start}
+  .pair .mem{margin:0}
+  .pair .mem img{aspect-ratio:3/4}
+  .pair .mem figcaption{font-size:.98rem}
+  .clip{width:min(100%,380px);margin-inline:auto}
+  .clip video{aspect-ratio:9/16}
+
+  /* ---------- declassified ---------- */
+  .declassified{
+    position:relative;margin:34px 0 0;padding:22px 18px 20px;
+    background:var(--card);border:1px dashed var(--line);border-radius:16px;box-shadow:var(--shadow);
+  }
+  .declassified .stamp{
+    display:inline-flex;gap:10px;align-items:baseline;
+    font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;
+  }
+  .declassified .stamp s{color:var(--muted);text-decoration-thickness:2px}
+  .declassified .stamp b{
+    color:var(--flame1);border:2px solid var(--flame1);border-radius:4px;
+    padding:2px 7px;transform:rotate(-3deg);display:inline-block;
+  }
+  .declassified blockquote{
+    margin:14px 0 0;padding-left:14px;border-left:3px solid var(--line);
+    font-family:"Didot","Bodoni 72","Playfair Display","Baskerville","Times New Roman",Georgia,serif;
+    font-style:italic;font-size:1.12rem;line-height:1.4;
+  }
+  .declassified .pair{margin-top:18px}
+
+  footer{
+    text-align:center;color:var(--muted);font-size:.8rem;
+    padding:40px 22px 46px;border-top:1px solid var(--line);margin-top:60px;
+  }
+  footer a{color:var(--sea)}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="script">what actually happened</span>
+    <h1 class="serif">Ischia, <em>now.</em></h1>
+    <div class="rule"></div>
+    <p>Everything that was a promise on the other page, Saba, is a photo on this one.</p>
+    <div class="chips">
+      <span class="chip">July 28–31</span>
+      <span class="chip">One convertible</span>
+      <span class="chip">Promises kept</span>
+      <span class="chip">Zero regrets</span>
+    </div>
+    <figure class="cover rev"><img src="/media/ischia/day2-santangelo.jpg" alt="Saba at dinner in Sant'Angelo after dark, thumbs up"></figure>
+  </div>
+</header>
+
+<!-- ══════════════ DAY 1 ══════════════ -->
+<section class="day" id="day1">
+  <div class="wrap">
+    <div class="kicker rev">Day 01 · Monday, July 28</div>
+    <h2 class="serif rev">The Rendezvous</h2>
+    <span class="script tag rev">spritz first, questions later</span>
+    <div class="pair rev">
+      <figure class="mem"><img src="/media/ischia/day1-hydrofoil.jpg" loading="lazy" alt="Two spritz in plastic cups, toasting on the hydrofoil"><figcaption>first toast: plastic cups, open sea</figcaption></figure>
+      <figure class="mem"><img src="/media/ischia/day1-dinner.jpg" loading="lazy" alt="First dinner on the hotel terrace at night"><figcaption>first dinner. security was not called.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DAY 2 ══════════════ -->
+<section class="day" id="day2">
+  <div class="wrap">
+    <div class="kicker rev">Day 02 · Tuesday, July 29</div>
+    <h2 class="serif rev">The Thermal Day</h2>
+    <span class="script tag rev">warm water, then dressed up</span>
+    <figure class="mem rev"><img src="/media/ischia/day2-citara.jpg" loading="lazy" alt="Saba walking down the path to Citara bay"><figcaption>down to Citara. the pools were waiting.</figcaption></figure>
+    <figure class="mem clip rev">
+      <video autoplay muted loop playsinline preload="metadata" poster="/media/ischia/day2-pergola-poster.jpg" aria-label="The two of us under the vine pergola, dressed for dinner">
+        <source src="/media/ischia/day2-pergola.mp4" type="video/mp4">
+      </video>
+      <figcaption>the pergola, the dress, the one take we kept</figcaption>
+    </figure>
+    <figure class="mem clip rev">
+      <video autoplay muted loop playsinline preload="metadata" poster="/media/ischia/day2-dinner-poster.jpg" aria-label="Arriving at the restaurant terrace in Sant'Angelo at sunset, a pianist playing">
+        <source src="/media/ischia/day2-dinner.mp4" type="video/mp4">
+      </video>
+      <figcaption>dinner in Sant'Angelo: sunset, sea, and a piano nobody warned us about</figcaption>
+    </figure>
+    <p class="note rev">And the thing after dinner? Still classified. Some files stay closed.</p>
+  </div>
+</section>
+
+<!-- ══════════════ DAY 3 ══════════════ -->
+<section class="day" id="day3">
+  <div class="wrap">
+    <div class="kicker rev">Day 03 · Wednesday, July 30</div>
+    <h2 class="serif rev">The Island Loop</h2>
+    <span class="script tag rev">white linen, golden hour</span>
+    <div class="pair rev">
+      <figure class="mem"><img src="/media/ischia/day3-balcony.jpg" loading="lazy" alt="Saba on a balcony above the sea, a yacht in the bay"><figcaption>yacht not included</figcaption></figure>
+      <figure class="mem"><img src="/media/ischia/day3-pool.jpg" loading="lazy" alt="Saba in a pool framed by tall reeds"><figcaption>a dip before the loop</figcaption></figure>
+    </div>
+    <div class="pair rev">
+      <figure class="mem"><img src="/media/ischia/day3-garden-1.jpg" loading="lazy" alt="Selfie of the two of us in white in the hotel garden"><figcaption>take one</figcaption></figure>
+      <figure class="mem"><img src="/media/ischia/day3-garden-2.jpg" loading="lazy" alt="Second selfie in the same spot"><figcaption>take two</figcaption></figure>
+    </div>
+    <p class="note rev">Remember the itinerary: “I took it standing exactly where we'll be standing.” Three weeks apart, two metres apart.</p>
+    <div class="pair rev">
+      <figure class="mem"><img src="/media/ischia/day3-promise.jpg" loading="lazy" alt="The terrace viewpoint at sunset, photographed on July 5"><figcaption>July 5: the promise</figcaption></figure>
+      <figure class="mem"><img src="/media/ischia/day3-aperitivo.jpg" loading="lazy" alt="The two of us having an aperitivo at the same viewpoint"><figcaption>July 30: promise kept</figcaption></figure>
+    </div>
+    <figure class="mem rev"><img src="/media/ischia/day3-promise-kept.jpg" loading="lazy" alt="Saba at golden hour on the terrace above Ischia"><figcaption>the view I promised you, with you in it</figcaption></figure>
+
+    <div class="declassified rev">
+      <div class="stamp"><s>Classified</s><b>Declassified</b></div>
+      <blockquote>“A table perched in the sky, the sea somewhere far below.”</blockquote>
+      <p class="note">That was the whole brief. Here's the sky part: a stone tower on its own rock, lanterns on, the sun going down behind it. The name stays classified: some places you only find by being taken there.</p>
+      <div class="pair">
+        <figure class="mem"><img src="/media/ischia/day3-tower.jpg" loading="lazy" alt="Stone tower restaurant on a rock at dusk"><figcaption>the tower</figcaption></figure>
+        <figure class="mem"><img src="/media/ischia/day3-tower-inside.jpg" loading="lazy" alt="Saba walking into the dining room with a view over the island"><figcaption>the table</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DAY 4 ══════════════ -->
+<section class="day" id="day4">
+  <div class="wrap">
+    <div class="kicker rev">Day 04 · Thursday, July 31</div>
+    <h2 class="serif rev">The Long Goodbye</h2>
+    <span class="script tag rev">no photos, on purpose</span>
+    <p class="note rev">Cornetto, coffee, suitcases, a hydrofoil. No photos from the last morning: we were too busy not saying goodbye. Which, for the record, it wasn't.</p>
+  </div>
+</section>
+
+<footer>
+  The plan is <a href="/ischia/">here</a>. Every trip, past and next, lives <a href="/trips/">here</a>. ✈️
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var videos = document.querySelectorAll('.clip video');
+
+  // Mouvement réduit : pas de lecture automatique, le clip devient une vidéo à lancer soi-même.
+  if(reduceMotion){
+    videos.forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+  }
+
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    document.documentElement.classList.add('js');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rev').forEach(function(el){ io.observe(el); });
+
+    // Les clips ne tournent que lorsqu'ils sont à l'écran.
+    var vio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ var p = e.target.play(); if(p && p.catch){ p.catch(function(){}); } }
+        else { e.target.pause(); }
+      });
+    });
+    videos.forEach(function(v){ vio.observe(v); });
+  }
+})();
+</script>

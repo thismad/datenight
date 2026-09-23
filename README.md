@@ -10,6 +10,8 @@ Page de présentation des premières vacances (28–31 juillet) : quatre destina
 - `build.py` — enveloppe le template en document HTML complet (balises `og:` pour l'aperçu WhatsApp, favicon, `noindex`).
 - `index.html` — fichier généré, servi par GitHub Pages. Ne pas modifier à la main.
 - `img/` — photos (Wikimedia Commons, recompressées).
+- `template-ischia.html`, `template-ischia-memories.html`, `template-trips.html` : itinéraire (`/ischia/`), souvenirs (`/ischia/memories/`) et liste des voyages (`/trips/`). La navbar (Trip Ideas / Finished Trips) est ajoutée par `build.py` sur toutes les pages.
+- `media/<voyage>/` : photos et clips des souvenirs, préparés avec `python3 scripts/prep_media.py SOURCE media/<voyage>/nom.jpg` (ou `.mp4` pour un clip en boucle muet, 15 s max). Le script supprime les données GPS.
 
 ## Modifier la page
 
